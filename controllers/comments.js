@@ -22,3 +22,14 @@ export async function postComment(request, response) {
     })
 
 }
+
+export const getCommentsByRecipeId = async(req, res) =>{
+    try{
+        const recipeId = req.params.recipeId
+        const comments = await Comment.find({recipe_id: recipeId})
+        response.status(200).json(comments) 
+    }
+    catch(err){
+        response.status(500).json({ message: "Failed to get comments" })
+    }
+}

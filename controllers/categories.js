@@ -1,5 +1,5 @@
 import Category from "../models/category.js";
-
+import jsonwebtoken from 'jsonwebtoken';
 // CRUD ops
 
 //GET

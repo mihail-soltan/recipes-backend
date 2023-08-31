@@ -6,7 +6,7 @@ import jsonwebtoken from 'jsonwebtoken';
 
 export async function getRecipes(request, response) {
     try {
-        const recipes = await Recipe.find().populate("categories")
+        const recipes = await Recipe.find().populate("category")
         response.status(200).json(recipes);
     }
     catch (err) {
@@ -17,7 +17,7 @@ export async function getRecipes(request, response) {
 export async function getRecipesByCategory(request, response) {
     try {
         const categoryId = request.params.category
-        const recipes = await Recipe.find({ categories: { $in: [categoryId] } }).populate("category")
+        const recipes = await Recipe.find({ category: { $in: [categoryId] } }).populate("category")
         response.status(200).json(recipes)
     }
     catch (err) {
